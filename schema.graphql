@@ -1,0 +1,31 @@
+schema {
+    query: Query
+}
+
+type airSensors {
+    _measurement: String
+    _time: String
+    _start: String 
+    _stop: String 
+    sensor_id: String 
+    _field: String
+    _value: Float
+}
+
+type SensorResult {
+    success: Boolean!
+    errors: [String]
+    post: airSensors!
+}
+
+type SensorsResult {
+    success: Boolean!
+    errors: [String]
+    post: [airSensors]
+}
+
+
+type Query {
+    listSensorID: SensorsResult!
+    getSensorID(sensor_id: String!): SensorsResult!
+}
