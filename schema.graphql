@@ -1,5 +1,7 @@
 schema {
     query: Query
+    mutation: Mutation
+    subscription: Subscription
 }
 
 type airSensors {
@@ -12,10 +14,17 @@ type airSensors {
     _value: Float
 }
 
+type airSensorsSubscription {
+    _measurement: String
+    sensor_id: String 
+    _field: String
+    _value: Float
+}
+
 type SensorResult {
     success: Boolean!
     errors: [String]
-    post: airSensors!
+    post: airSensorsSubscription!
 }
 
 type SensorsResult {
@@ -24,8 +33,21 @@ type SensorsResult {
     post: [airSensors]
 }
 
+type sensorCreated{
+    success: Boolean!
+    errors: [String]
+    post: String!
+}
+
+type Subscription {
+    messageSensor: SensorResult!
+}
 
 type Query {
     listSensorID: SensorsResult!
     getSensorID(sensor_id: String!): SensorsResult!
+}
+
+type Mutation {
+    createSensor(sensor_id: String, _field: String, _value: Float) : sensorCreated
 }

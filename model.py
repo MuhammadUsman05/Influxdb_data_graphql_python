@@ -4,7 +4,7 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 
 token = "uIqSlzGvQ7lRMWlGpq_5H180p2qx6dJTEW8vL7MppUBf4RUZoEhgSITb8OdCIO0NDUcCYZ1Oil5JzGegwecRSw=="
 org = "usmangovedi1@gmail.com"
-bucket = "usmangovedi1's Bucket"
+bucket = "usmangovedi1\'s Bucket"
 db = InfluxDBClient(url="https://us-east-1-1.aws.cloud2.influxdata.com", token=token)
 
 def to_dict():
